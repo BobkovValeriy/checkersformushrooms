@@ -1,0 +1,18 @@
+.chess-cell {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid #2a1f0f 2px;
+
+  font-size: 14px;
+}
+.white {
+  background-color: #fcc163;
+}
+
+.black {
+  background-color: #78592c;
+  color: #fff;
+}
