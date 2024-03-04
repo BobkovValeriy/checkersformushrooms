@@ -2,7 +2,6 @@ import React from "react";
 import "./cell.scss";
 import PieceBlack from "../figures/pieceBLack";
 import PieceWhite from "../figures/pieceWhite";
-import { validationOfChechersMove } from "../utils/utils";
 
 const ChessCell = ({
   row,
@@ -30,15 +29,19 @@ const ChessCell = ({
         const fromRow = selectedCell.row;
         const fromCol = selectedCell.col;
         const movingPieceColor = selectedCell.pieceColor;
-        const isValidMove = validationOfChechersMove(
-          movingPieceColor,
-          cellColor,
-          row,
-          fromRow,
-          pieceColor
-        );
+        const isValidMove =
+          (movingPieceColor === "black" &&
+            cellColor === "black" &&
+            row === fromRow + 1 &&
+            row > fromRow &&
+            pieceColor === null) ||
+          (movingPieceColor === "white" &&
+            cellColor === "black" &&
+            row === fromRow - 1 &&
+            row < fromRow &&
+            pieceColor === null);
 
-        if (isValidMove === 0) {
+        if (!isValidMove) {
           console.log("Invalid move!");
           return prevChessBoard;
         }
